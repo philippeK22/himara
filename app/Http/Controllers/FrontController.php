@@ -81,6 +81,12 @@ class FrontController extends Controller
         return view("page");
     }
 
+    public function blogPost(){
+        
+
+        return view("blogPost");
+    }
+
 
 
 

@@ -1,9 +1,9 @@
 <!-- ========== MOBILE MENU ========== -->
-<nav id="mobile-menu"></nav>
+{{-- <nav id="mobile-menu"></nav> --}}
 <!-- ========== WRAPPER ========== -->
 <div class="wrapper">
   <!-- ========== TOP MENU ========== -->
-  <div class="topbar">
+  {{-- <div class="topbar">
     <div class="container">
       <div class="welcome-mssg">
         Welcome to Hotel Himara.
@@ -42,9 +42,9 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div> --}}
   <!-- ========== HEADER ========== -->
-  <header class="horizontal-header sticky-header" data-menutoggle="991">
+  {{-- <header class="horizontal-header sticky-header" data-menutoggle="991">
     <div class="container">
       <!-- BRAND -->
       <div class="brand">
@@ -90,7 +90,7 @@
         </ul>
       </nav>
     </div>
-  </header>
+  </header> --}}
   <!-- ========== PAGE TITLE ========== -->
   <div class="page-title gradient-overlay op6" style="background: url(images/breadcrumb.jpg); background-repeat: no-repeat;
 background-size: cover;">
