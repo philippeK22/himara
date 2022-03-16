@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tagArticle extends Model
+class Team extends Model
 {
     use HasFactory;
 
-    public function articles(){
+    public function fonction(){
 
-        return $this->belongsToMany(Article::class,"tag_articles");
+        return $this->belongsTo(Fonction::class,"fonction_id");
     }
 }
