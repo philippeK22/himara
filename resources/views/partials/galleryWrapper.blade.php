@@ -130,6 +130,7 @@ background-size: cover;">
      <!-- GALLERY -->
      <div class="container">
        <div class="grid image-gallery row">
+        @foreach ($imageAll as $item)
          <!-- ITEM -->
          <div class="gallery-item filter-swimmingpool col-md-3">
            <figure class="gradient-overlay image-icon">
@@ -139,8 +140,9 @@ background-size: cover;">
              <figcaption>Swimming Pool</figcaption>
            </figure>
          </div>
+         @endforeach
          <!-- ITEM -->
-         <div class="gallery-item filter-roomview col-md-3">
+         {{-- <div class="gallery-item filter-roomview col-md-3">
            <figure class="gradient-overlay image-icon">
              <a href="images/gallery/gallery2.jpg">
                <img src="images/gallery/gallery2.jpg" class="img-fluid" alt="Image">
@@ -273,12 +275,13 @@ background-size: cover;">
              </a>
              <figcaption>Room View</figcaption>
            </figure>
-         </div>
+         </div> --}}
        </div>
      </div>
    </main>
    <!-- ========== FOOTER ========== -->
-   <footer>
+   @include('partials.footerEventsDetails')
+   {{-- <footer>
      <div class="footer-widgets">
        <div class="container">
          <div class="row">
@@ -414,10 +417,10 @@ background-size: cover;">
          </div>
        </div>
      </div>
-   </footer>
+   </footer> --}}
  </div>
  <div class="notification"></div>
  <!-- ========== BACK TO TOP ========== -->
- <div class="back-to-top">
+ {{-- <div class="back-to-top">
    <i class="fa fa-angle-up" aria-hidden="true"></i>
- </div>
+ </div> --}}

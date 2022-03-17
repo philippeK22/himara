@@ -50,6 +50,50 @@ Route::get('/Loading', [FrontController::class,"loading"])->name('loading');
 
 Route::get('/page', [FrontController::class,"page"])->name('page');
 
+Route::get('/Service/home', [FrontController::class,"service"])->name('service');
+
+Route::get('/BlogPost/{id}', [FrontController::class,"blogPost"])->name('blogLast');
+
+Route::post('/search', [FrontController::class, "search"])->name('search');
+
+Route::get('/CategorieId/{id}', [FrontController::class,"searchCategorie"])->name('blogCategorie');
+
+Route::get('/TAGId/{id}', [FrontController::class,"tagCategorie"])->name('tagCategorie');
+
+Route::get('/admin/dashboard', [FrontController::class,"admin"])->middleware(["auth"])->name('dashboard');
+
+// admin back
+
+Route::get('/admin/room', function () {
+    return view('admin.room.main');
+})->middleware(['auth'])->name('room.index');
+
+
+Route::get('/admin/staff', function () {
+    return view('admin.staff.main');
+})->middleware(['auth'])->name('staff.index');
+
+
+Route::get('/dashboard/blog', function () {
+    return view('admin.blog.main');
+})->middleware(['auth'])->name('blog.index');
+
+
+Route::get('/admin/gallery', [GalleryController::class,"affichage"])->middleware(["auth"])->name('gallery.index');
+
+Route::get('/admin/contact', function () {
+    return view('admin.contact.main');
+})->middleware(['auth'])->name('contact.index');
+
+// store pour le formulaire commentaire
+
+Route::get("/comments/{id}/edit", [CommentController::class, "edit"]);
+Route::post("/commentaires/{id}", [CommentController::class,"store"]);
+Route::delete("/comments/{id}/delete", [CommentController::class, "destroy"]);
+Route::put("/comments/{id}/update", [CommentController::class, "update"]);
+
+
+
 
 
 

@@ -82,7 +82,7 @@
                   <li class="menu-item">
                     <a href="{{ route("blog") }}">BLOG</a>
                   </li>
-                  
+
                   <li class="menu-item menu-btn">
                     @if (Route::has('login'))
                         @auth
@@ -119,34 +119,42 @@
         <main class="location-page">
           <div class="container">
             <div class="row">
+                @foreach ($team as $item)
+                @if ($loop->iteration != 1)
               <!-- ITEM -->
               <div class="col-lg-3 col-md-6">
                 <div class="staff-item">
                   <figure>
-                    <img src="images/staff/staff1.jpg" class="img-fluid" alt="Image">
-                    <div class="position">Housekeeper</div>
+                    <img src="{{ asset("images/". $item->img) }}" class="img-fluid" alt="Image">
+                    <div class="position">{{ $item->fonction->fonction }}</div>
                   </figure>
                   <div class="details">
-                    <h5>Jeanette Owens</h5>
-                    <p>Lorem Ipsum which looks many web sites pass websites is therefore always.</p>
+                    <h5>{{ $item->fullname }}</h5>
+                    <p>{{ $item->description }}</p>
                   </div>
                 </div>
               </div>
+
+              @else
               <!-- ITEM -->
               <div class="col-lg-3 col-md-6">
                 <div class="staff-item">
                   <figure>
-                    <img src="images/staff/staff2.jpg" class="img-fluid" alt="Image">
-                    <div class="position">Receptionist</div>
+                    <img src="{{ asset("images/". $houseKeeper->img) }}" class="img-fluid" alt="Image">
+                    <div class="position">{{ $houseKeeper->fonction->fonction }}</div>
                   </figure>
                   <div class="details">
-                    <h5>Henry Garrett</h5>
-                    <p>Lorem Ipsum which looks many web sites pass websites is therefore always.</p>
+                    <h5>{{ $houseKeeper->fullname }}</h5>
+                    <p>{{ $houseKeeper->description }}</p>
                   </div>
                 </div>
               </div>
+
+              @endif
+
+              @endforeach
               <!-- ITEM -->
-              <div class="col-lg-3 col-md-6">
+              {{-- <div class="col-lg-3 col-md-6">
                 <div class="staff-item">
                   <figure>
                     <img src="images/staff/staff3.jpg" class="img-fluid" alt="Image">
@@ -222,12 +230,14 @@
                     <p>Lorem Ipsum which looks many web sites pass websites is therefore always.</p>
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
         </main>
         <!-- ========== FOOTER ========== -->
-        <footer>
+
+        @include('partials.footerEventsDetails')
+        {{-- <footer>
           <div class="footer-widgets">
             <div class="container">
               <div class="row">
@@ -363,7 +373,7 @@
               </div>
             </div>
           </div>
-        </footer>
+        </footer> --}}
       </div>
 
       <div class="notification"></div>

@@ -427,13 +427,16 @@ background-size: cover;">
           <!-- POSTS -->
           <div class="blog-posts">
             <!-- POST -->
+            @foreach ($blog as $item)
+
+
             <article class="post">
               <div class="row">
                 <div class="col-sm-4">
                   <div class="post-thumbnail">
                     <figure class="gradient-overlay-hover link-icon">
-                      <a href="blog-post.html">
-                        <img src="images/blog/blog-post1.jpg" class="img-fluid" alt="Image">
+                      <a href="{{ route("blogLast",$item->id) }}">
+                        <img src="{{ asset('/images/blog/'. $item->img) }}" class="img-fluid" alt="Image">
                       </a>
                     </figure>
                   </div>
@@ -441,15 +444,15 @@ background-size: cover;">
                 <div class="col-sm-8">
                   <div class="post-details">
                     <h2 class="post-title">
-                      <a href="blog-post.html">10 Tips for Holiday Travel</a>
+                      <a href="{{ route("blogLast",$item->id)  }}">{{ $item->title }}</a>
                     </h2>
                     <div class="post-meta">
                       <span class="author">
-                        <a href="#"><img src="images/users/admin.jpg" width="16" alt="Image">JANE Doe</a>
+                        <a href="#"><img src="images/users/admin.jpg" width="16" alt="Image">{{ $item->auteur }}</a>
                       </span>
                       <span class="date">
                         <a href="#">
-                          <i class="fa fa-clock-o"></i>August 13, 2017</a>
+                          <i class="fa fa-clock-o"></i>{{ $item->creation }}</a>
                       </span>
                       <span class="comments">
                         <a href="#">
@@ -461,13 +464,15 @@ background-size: cover;">
                         <a href="#">Events</a>
                       </span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam amet reiciendis ducimus deserunt non dolorum, distinctio repellendus eaque, officiis dicta! Sit numquam qui tenetur tempore officia minus, a dignissimos ...</p>
+                    <p>{{ Str::limit($item->description, 250) }}</p>
                   </div>
                 </div>
               </div>
             </article>
+
+            @endforeach
             <!-- POST -->
-            <article class="post">
+            {{-- <article class="post">
               <div class="row">
                 <div class="col-sm-4">
                   <div class="post-thumbnail">
@@ -545,9 +550,9 @@ background-size: cover;">
                   </div>
                 </div>
               </div>
-            </article>
+            </article> --}}
             <!-- POST -->
-            <article class="post">
+            {{-- <article class="post">
               <div class="row">
                 <div class="col-sm-4">
                   <div class="post-thumbnail">
@@ -665,7 +670,7 @@ background-size: cover;">
                   </div>
                 </div>
               </div>
-            </article>
+            </article> --}}
           </div>
           <!-- ========== PAGINATION ========== -->
           <nav class="pagination">
@@ -715,7 +720,9 @@ background-size: cover;">
           <div class="sidebar">
             <aside class="widget noborder">
               <div class="search">
-                <form class="widget-search">
+                <form class="widget-search" action="{{ route("search") }}" method="POST">
+                    @csrf
+
                   <input type="search" placeholder="Search">
                   <button class="btn-search" id="searchsubmit" type="submit">
                     <i class="fa fa-search"></i>
@@ -727,10 +734,14 @@ background-size: cover;">
             <aside class="widget">
               <h4 class="widget-title">CATEGORIES</h4>
               <ul class="categories">
+                  @foreach ($categoryArticle as $item)
+
+
                 <li>
-                  <a href="#">Travel<span class="posts-num">51</span></a>
+                  <a href="{{ route("blogCategorie",$item->id) }}">{{ $item->nom }}<span class="posts-num">{{ count($item->articles) }}</span></a>
                 </li>
-                <li>
+                @endforeach
+                {{-- <li>
                   <a href="#">Rooms<span class="posts-num">24</span></a>
                 </li>
                 <li>
@@ -742,34 +753,39 @@ background-size: cover;">
                 </li>
                 <li>
                   <a href="#">Events<span class="posts-num">28</span></a>
-                </li>
+                </li> --}}
               </ul>
             </aside>
             <!-- WIDGET -->
             <aside class="widget">
               <h4 class="widget-title">Latest Posts</h4>
               <div class="latest-posts">
+                  @foreach ($blogLast as $item)
+
+
                 <!-- ITEM -->
                 <div class="latest-post-item">
                   <div class="row">
                     <div class="col-5">
                       <figure class="gradient-overlay-hover link-icon sm">
-                        <a href="blog-post.html">
-                          <img src="images/blog/blog-post1.jpg" class="img-fluid" alt="Image">
+                        <a href="{{ route("blogLast",$item->id) }}">
+                          <img src="{{ asset('/images/blog/'. $item->img) }}" class="img-fluid" alt="Image">
                         </a>
                       </figure>
                     </div>
                     <div class="col-7">
                       <div class="post-details">
                         <h6 class="post-title">
-                          <a href="blog-post.html">10 Tips for Holiday Travel</a>
+                          <a href="{{ route("blogLast",$item->id) }}">{{ $item->title }}</a>
                         </h6>
                       </div>
                     </div>
                   </div>
                 </div>
+                @endforeach
+
                 <!-- ITEM -->
-                <div class="latest-post-item">
+                {{-- <div class="latest-post-item">
                   <div class="row">
                     <div class="col-5">
                       <figure class="gradient-overlay-hover link-icon sm">
@@ -787,6 +803,7 @@ background-size: cover;">
                     </div>
                   </div>
                 </div>
+
                 <!-- ITEM -->
                 <div class="latest-post-item">
                   <div class="row">
@@ -843,8 +860,8 @@ background-size: cover;">
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </div>--}}
+              </div> 
             </aside>
             <!-- WIDGET -->
             <aside class="widget">
