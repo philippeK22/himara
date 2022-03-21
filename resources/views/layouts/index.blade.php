@@ -32,7 +32,8 @@
 <body>
 
     @yield('content')
-   
+    
+
 
 
 

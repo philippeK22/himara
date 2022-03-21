@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -74,12 +75,18 @@ Route::get('/admin/staff', function () {
 })->middleware(['auth'])->name('staff.index');
 
 
-Route::get('/dashboard/blog', function () {
+Route::get('/admin/blog', function () {
     return view('admin.blog.main');
 })->middleware(['auth'])->name('blog.index');
 
 
-Route::get('/admin/gallery', [GalleryController::class,"affichage"])->middleware(["auth"])->name('gallery.index');
+Route::get('/admin/gallery', [GalleryController::class,"index"])->middleware(["auth"])->name('gallery.index');
+
+route::get("/admin/gallery/create",[GalleryController::class,"create"])->name("images.create");
+
+route::post("/admin/gallery/store",[GalleryController::class,"store"])->name("images.store");
+
+Route::delete('admin/gallery/{image}/delete', [GalleryController::class,"destroy"])->name("images.destroy");
 
 Route::get('/admin/contact', function () {
     return view('admin.contact.main');

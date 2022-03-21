@@ -679,6 +679,8 @@ background-size: cover;">
 <!-- ========== NOTIFICATION ========== -->
 <div id="booking-notification" class="notification fixed"></div>
 <!-- ========== BACK TO TOP ========== -->
+
 <div class="back-to-top">
   <i class="fa fa-angle-up" aria-hidden="true"></i>
 </div>
+
