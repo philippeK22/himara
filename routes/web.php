@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategorieImageController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -92,6 +96,19 @@ Route::get('/admin/contact', function () {
     return view('admin.contact.main');
 })->middleware(['auth'])->name('contact.index');
 
+// CategorieImage
+Route::get('/admin/categoryImage/', [CategorieImageController::class,"affichageCategoryImage"])->middleware(["auth"])->name('categoryImage.index');
+
+route::get("/admin/categoryImage/create",[CategorieImageController::class,"create"])->name("categoryImage.create");
+
+route::post("/admin/categoryImage/store",[CategorieImageController::class,"store"])->name("categoryImage.store");
+
+Route::delete('/admin/categoryImage/{categories}/destroy', [CategorieImageController::class,"destroy"])->name("categoryImage.destroy");
+
+route::get("/admin/categoryImage/{categories}/edit",[CategorieImageController::class,"edit"])->name("categories.edit");
+
+route::put("/admin/categoryImage/{categories}/update",[CategorieImageController::class,"update"])->name("categories.update");
+
 // store pour le formulaire commentaire
 
 Route::get("/comments/{id}/edit", [CommentController::class, "edit"]);
@@ -99,7 +116,44 @@ Route::post("/commentaires/{id}", [CommentController::class,"store"]);
 Route::delete("/comments/{id}/delete", [CommentController::class, "destroy"]);
 Route::put("/comments/{id}/update", [CommentController::class, "update"]);
 
+// Team
 
+Route::get('/admin/staff', [StaffController::class,"affichage"])->middleware(["auth"])->name('team.index');
+
+route::get("/admin/staff/create",[StaffController::class,"create"])->name("teams.create");
+
+route::post("/admin/staff/store",[StaffController::class,"store"])->name("teams.store");
+
+Route::delete('/admin/staff/{teams}/delete', [StaffController::class,"destroy"])->name("teams.destroy");
+
+route::get("/admin/staff/{teams}/edit",[StaffController::class,"edit"])->name("teams.edit");
+
+route::put("/admin/staf/teams/{teams}/updateindex",[StaffController::class,"update"])->name("teams.update");
+
+//blog
+
+
+route::post("/admin/blog/store",[ArticleController::class,"store"])->name("blogs.store");
+
+route::get("/admin/blog/create",[ArticleController::class,"create"])->name("blogs.create");
+
+route::get("/admin/blog/{blog}/edit",[ArticleController::class,"edit"])->name("blogs.edit");
+
+
+route::put("/admin/blog/{blog}/update",[ArticleController::class,"update"])->name("blogs.update");
+
+
+Route::get('/admin/blog', [ArticleController::class,"affichage"])->middleware(["auth"])->name('blog.index');
+
+// contact crud
+
+Route::get('/admin/contact', [ContactController::class,"affichage"])->middleware(["auth"])->name('contact.index');
+
+
+route::get("/admin/contact/{info}/edit",[ContactController::class,"edit"])->name("contacts.edit");
+
+
+route::put("/admin/contact/{info}/update",[ContactController::class,"update"])->name("contacts.update");
 
 
 

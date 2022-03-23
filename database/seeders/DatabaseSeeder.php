@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             FonctionSeeder::class,
             TeamSeeder::class,
             ServiceSeeder::class,
+            InfoSeeder::class,
 
         ]);
     }

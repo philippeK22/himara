@@ -67,7 +67,7 @@
 </div>
 </div> --}}
 
-<div class="container-fluid w-25 m-0">
+<div class="container-fluid w-25 m-0 h-100">
     {{-- <div class="page-heading">
         <h3>Profile Statistics</h3>
     </div> --}}
@@ -98,7 +98,7 @@
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('admin/staff') ? 'active' : ''; }}">
-                        <a href="{{ route("staff.index") }}" class="nav-link align-middle px-0">
+                        <a href="{{ route("team.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Team</span>
                         </a>
                     </li>
@@ -110,6 +110,11 @@
                     <li class="nav-item {{ Request::is('admin/gallery') ? 'active' : ''; }}">
                         <a href="{{ route("gallery.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Gallery</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::is('admin/categoryImage') ? 'active' : ''; }}">
+                        <a href="{{ route("categoryImage.index") }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Categorie Image</span>
                         </a>
                     </li>
                     <li class="nav-item {{ Request::is('admin/contact') ? 'active' : ''; }}">
