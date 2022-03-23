@@ -130,6 +130,9 @@ route::get("/admin/staff/{teams}/edit",[StaffController::class,"edit"])->name("t
 
 route::put("/admin/staf/teams/{teams}/updateindex",[StaffController::class,"update"])->name("teams.update");
 
+//contact mail
+Route::post('/mail/contact', [ContactController::class,"store"])->name('testmail');
+
 //blog
 
 

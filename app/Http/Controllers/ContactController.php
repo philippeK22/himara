@@ -30,9 +30,9 @@ class ContactController extends Controller
 
         // $contact->read = 1;
 
-    //    $contact->save();
-    //    Mail::to($contact->email,$contact->fullname)->send(new ContactSender($contact->fullname,$contact->message));
-    //    return redirect()->back();
+       $contact->save();
+    //    Mail::to($contact->email,$contact->fullname)->send(new Contactsender($contact->fullname,$contact->message));
+       return redirect()->back();
     }
 
     public function edit(Info $info){
