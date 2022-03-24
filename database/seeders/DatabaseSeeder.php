@@ -27,7 +27,16 @@ class DatabaseSeeder extends Seeder
             FonctionSeeder::class,
             TeamSeeder::class,
             ServiceSeeder::class,
+            CategorieRoomSeeder::class,
+            StatutSeeder::class,
+            FeatureSeeder::class,
+            RoomTagSeeder::class,
+            RoomSeeder::class,
             InfoSeeder::class,
+            VideoSeeder::class,
+            CarouselSeeder::class,
+            HimaraPictureSeeder::class,
+
 
         ]);
     }

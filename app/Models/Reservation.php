@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Reservation extends Model
 {
     use HasFactory;
-    public function articles()
-    {
-        return $this->belongsToMany(Article::class,"tag_articles");
-    }
+    public function category(){
+        return $this->belongsTo(categorieRoom::class, 'category_room_id');
+}
 }

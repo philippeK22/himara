@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactSender;
 use App\Models\Contact;
 use App\Models\Info;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class ContactController extends Controller
         // $contact->read = 1;
 
        $contact->save();
-    //    Mail::to($contact->email,$contact->fullname)->send(new Contactsender($contact->fullname,$contact->message));
+       Mail::to($contact->email,$contact->fullname)->send(new ContactSender($contact->fullname,$contact->message));
        return redirect()->back();
     }
 

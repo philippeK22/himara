@@ -325,7 +325,7 @@
                         <div class="col-md-2">
                             <button type="submit" class="btn btn-book">BOOK A ROOM</button>
                             <div class="advanced-form-link">
-                                <a href="booking-form.html">
+                                <a href="{{ route("booking") }}">
                                     Advanced Booking Form
                                 </a>
                             </div>
@@ -415,15 +415,16 @@
         <div class="section-title">
             <h4>OUR <span class="text-himara">ROOMS</span></h4>
             <p class="section-subtitle">Our favorite rooms</p>
-            <a href="rooms-list.html" class="view-all">View all rooms</a>
+            <a href="{{ route("roomList") }}" class="view-all">View all rooms</a>
         </div>
         <div class="row">
+            @foreach ($roomAll->shuffle()->take(3) as $room)
             <!-- ITEM -->
             <div class="col-md-4">
                 <div class="room-grid-item">
                     <figure class="gradient-overlay-hover link-icon">
-                        <a href="room.html">
-                            <img src="images/rooms/single/single1.jpg" class="img-fluid" alt="Image">
+                        <a href="{{ asset('/storage/images/' . $room->img) }}">
+                            <img src="{{ asset('/storage/images/' . $room->img) }}" class="img-fluid" alt="Image">
                         </a>
                         <div class="room-services">
                             <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right"
@@ -435,18 +436,19 @@
                                 data-trigger="hover" data-content="Plasma TV with cable channels"
                                 data-original-title="TV"></i>
                         </div>
-                        <div class="room-price">€89 / night</div>
+                        <div class="room-price">{{ $room->prix }}</div>
                     </figure>
                     <div class="room-info">
                         <h2 class="room-title">
-                            <a href="room.html">Single Room</a>
+                            <a href="room.html">{{ $room->categorie_room}}</a>
                         </h2>
                         <p>Enjoy our single room</p>
                     </div>
                 </div>
             </div>
+            @endforeach
             <!-- ITEM -->
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="room-grid-item">
                     <figure class="gradient-overlay-hover link-icon">
                         <a href="room.html">
@@ -471,9 +473,9 @@
                         <p>Enjoy our double room</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- ITEM -->
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="room-grid-item">
                     <figure class="gradient-overlay-hover link-icon">
                         <a href="room.html">
@@ -500,7 +502,7 @@
                         <p>Enjoy our delux room</p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>
@@ -600,20 +602,22 @@
         <div class="section-title">
             <h4>HIMARA. <span class="text-himara">GALLERY</span></h4>
             <p class="section-subtitle">Check out our image gallery</p>
-            <a href="gallery.html" class="view-all">View gallery images</a>
+            <a href="{{ route("gallery") }}" class="view-all">View gallery images</a>
         </div>
         <div class="gallery-owl owl-carousel image-gallery">
+            @foreach ($imageAll->shuffle()->take(5) as $image)
             <!-- ITEM -->
             <div class="gallery-item">
                 <figure class="gradient-overlay image-icon">
-                    <a href="images/gallery/gallery1.jpg">
-                        <img src="images/gallery/gallery1.jpg" alt="Image">
+                    <a href="{{ asset('/storage/images/'. $image->url) }}">
+                        <img src="{{ asset('/storage/images/'. $image->url) }}" alt="Image">
                     </a>
-                    <figcaption>Swimming Pool</figcaption>
+                    <figcaption>{{ $image->nom }} </figcaption>
                 </figure>
             </div>
+            @endforeach
             <!-- ITEM -->
-            <div class="gallery-item">
+            {{-- <div class="gallery-item">
                 <figure class="gradient-overlay image-icon">
                     <a href="images/gallery/gallery2.jpg">
                         <img src="images/gallery/gallery2.jpg" alt="Image">
@@ -692,7 +696,7 @@
                     </a>
                     <figcaption>Sea</figcaption>
                 </figure>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>
@@ -704,6 +708,7 @@
             <p class="section-subtitle">What our guests are saying about us</p>
         </div>
         <div class="owl-carousel testimonials-owl">
+            @foreach ($comments as $comment)
             <!-- ITEM -->
             <div class="item">
                 <div class="testimonial-item">
@@ -711,8 +716,8 @@
                         <img alt="Image" class="img-fluid" src="images/users/user1.jpg">
                     </div>
                     <div class="author">
-                        <h4 class="name">Marlene Simpson</h4>
-                        <div class="location">Madrid / Spain</div>
+                        <h4 class="name">{{ $comment->name }}</h4>
+                        <div class="location">{{ $comment->name }}</div>
                     </div>
                     <div class="rating">
                         <i class="fa fa-star voted" aria-hidden="true"></i>
@@ -721,8 +726,7 @@
                         <i class="fa fa-star voted" aria-hidden="true"></i>
                         <i class="fa fa-star voted" aria-hidden="true"></i>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
-                        condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
+                    <p>{{$comment->commentaire}}</p>
                 </div>
             </div>
             <!-- ITEM -->
@@ -746,8 +750,9 @@
                         condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
                 </div>
             </div>
+            @endforeach
             <!-- ITEM -->
-            <div class="item">
+            {{-- <div class="item">
                 <div class="testimonial-item">
                     <div class="author-img">
                         <img alt="Image" class="img-fluid" src="images/users/user3.jpg">
@@ -892,7 +897,7 @@
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec turpis a nunc convallis
                         condimentum. Sed odio nisl, mattis eget interdum non, pretium et lacus.</p>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>
@@ -966,29 +971,28 @@
             <p class="section-subtitle">Check out our latest news</p>
         </div>
         <div class="row">
+            @foreach ($blogAll->shuffle()->take(3) as $item)
             <!-- ITEM -->
             <div class="col-md-4">
                 <div class="news-grid-item">
                     <figure class="gradient-overlay-hover link-icon">
-                        <a href="blog-post.html">
-                            <img src="images/blog/blog-post1.jpg" class="img-fluid" alt="Image">
+                        <a href="{{ route("blogLast",$item->id)  }}">
+                            <img src="{{ asset('/storage/images/'. $item->img) }}" class="img-fluid" alt="Image">
                         </a>
                     </figure>
                     <div class="news-info">
                         <h4 class="title">
-                            <a href="blog-post.html">10 Tips for Holiday Travel</a>
+                            <a href="{{ route("blogLast",$item->id)  }}">{{ $item->title }}</a>
                         </h4>
-                        <p>An examination of how the current political and economical climate is affecting the mental
-                            healthcare
-                            industry...</p>
+                        <p>{{ Str::limit($item->description, 100) }}</p>
                         <div class="post-meta">
                             <span class="author">
                                 <a href="#"><img src="images/users/admin.jpg" width="16" alt="Image">
-                                    JANE</a>
+                                    {{ $item->auteur }}</a>
                             </span>
                             <span class="date">
                                 <i class="fa fa-clock-o"></i>
-                                August 13, 2017</span>
+                                {{ $item->creation }}</span>
                             <span class="comments">
                                 <a href="#">
                                     <i class="fa fa-commenting-o"></i>
@@ -998,8 +1002,9 @@
                     </div>
                 </div>
             </div>
+            @endforeach
             <!-- ITEM -->
-            <div class="col-md-4">
+            {{-- <div class="col-md-4">
                 <div class="news-grid-item">
                     <figure class="gradient-overlay-hover link-icon">
                         <a href="blog-post.html">
@@ -1061,7 +1066,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>
@@ -1071,7 +1076,7 @@
     <div class="inner gradient-overlay">
         <div class="container">
             <div class="video-popup">
-                <a class="popup-vimeo" href="https://www.youtube.com/watch?v=BDDfopejpwk">
+                <a class="popup-vimeo" href="{{ $video->url }}">
                     <i class="fa fa-play"></i>
                 </a>
             </div>
@@ -1091,24 +1096,24 @@
                 <ul class="contact-details">
                     <li>
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        Lorem ipsum dolor, 25, Himara
+                        {{ $infoAll->adresse }}
                     </li>
                     <li>
                         <i class="fa fa-phone" aria-hidden="true"></i>
-                        Phone: +1 888 123 4567
+                        {{ $infoAll->mail }}
                     </li>
                     <li>
                         <i class="fa fa-fax"></i>
-                        Fax: +1 888 123 4567
+                        {{ $infoAll->telephone }}
                     </li>
                     <li>
                         <i class="fa fa-globe"></i>
-                        Web: www.hotelhimara.com
+                        {{ $infoAll->fax }}
                     </li>
                     <li>
                         <i class="fa fa-envelope"></i>
                         Email:
-                        <a href="mailto:info@site.com">contact@hotelhimara.com</a>
+                        <a href="mailto:info@site.com"> {{ $infoAll->site }}</a>
                     </li>
                 </ul>
             </div>
@@ -1117,9 +1122,11 @@
                     <h4>CONTACT US</h4>
                     <p class="section-subtitle">Say hello</p>
                 </div>
-                <form id="contact-form" name="contact-form">
+                <form id="contact-form" name="contact-form" action="{{ route("testmail") }}" method="POST">
+                    @csrf
+
                     <div class="form-group">
-                        <input class="form-control" name="name" placeholder="Your Name" type="text">
+                        <input class="form-control" name="fullname" placeholder="Your Name" type="text">
                     </div>
                     <div class="form-group">
                         <input class="form-control" name="email" type="email" placeholder="Your Email Address">

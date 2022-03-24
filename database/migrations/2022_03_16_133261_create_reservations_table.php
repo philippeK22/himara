@@ -15,6 +15,17 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('email');
+            $table->datetime('debut');
+            $table->datetime('fin');
+            $table->integer('adult');
+            $table->integer('enfant');
+            $table->boolean('valide');
+            $table->string("commentaire");
+            $table->string("telephone");
+            $table->string("country");
+            $table->foreignId('categorie_room_id')->constrained();
             $table->timestamps();
         });
     }

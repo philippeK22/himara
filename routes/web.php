@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategorieImageController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GalleryController;
@@ -112,7 +113,7 @@ route::put("/admin/categoryImage/{categories}/update",[CategorieImageController:
 // store pour le formulaire commentaire
 
 Route::get("/comments/{id}/edit", [CommentController::class, "edit"]);
-Route::post("/commentaires/{id}", [CommentController::class,"store"]);
+Route::post("/comments/{id}/store", [CommentController::class,"store"]);
 Route::delete("/comments/{id}/delete", [CommentController::class, "destroy"]);
 Route::put("/comments/{id}/update", [CommentController::class, "update"]);
 

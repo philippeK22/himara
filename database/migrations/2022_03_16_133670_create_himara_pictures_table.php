@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoryRoomsTable extends Migration
+class CreateHimaraPicturesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCategoryRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('category_rooms', function (Blueprint $table) {
+        Schema::create('himara_pictures', function (Blueprint $table) {
             $table->id();
-            $table->string("nom");
+            $table->string("url");
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateCategoryRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('category_rooms');
+        Schema::dropIfExists('himara_pictures');
     }
 }
