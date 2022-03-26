@@ -125,7 +125,7 @@
               <div class="col-lg-3 col-md-6">
                 <div class="staff-item">
                   <figure>
-                    <img src="{{ asset("images/". $item->img) }}" class="img-fluid" alt="Image">
+                    <img src="{{ asset("storage/images/". $item->img) }}" class="img-fluid" alt="Image">
                     <div class="position">{{ $item->fonction->fonction }}</div>
                   </figure>
                   <div class="details">

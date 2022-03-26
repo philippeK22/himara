@@ -7,10 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ContactSender extends Mailable
+class ReservationMail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $data;
 
     /**
      * Create a new message instance.
@@ -20,7 +19,6 @@ class ContactSender extends Mailable
     public function __construct($data)
     {
         $this->data = $data;
-
     }
 
     /**
@@ -30,6 +28,7 @@ class ContactSender extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from philippe')->from('philmolengeek@gmail.com', 'phil kanen')->markdown('pages.mailtest');
+
+        return $this->from('philmolengeek@gmail.com', 'phil kanen')->markdown('mail.reservation')->with(['reservation' => $this->data]);
     }
 }

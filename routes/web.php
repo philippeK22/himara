@@ -1,13 +1,17 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\CategorieImageController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -149,6 +153,21 @@ route::put("/admin/blog/{blog}/update",[ArticleController::class,"update"])->nam
 
 Route::get('/admin/blog', [ArticleController::class,"affichage"])->middleware(["auth"])->name('blog.index');
 
+//Room crud
+
+Route::get('/admin/room', [RoomController::class, "affichage"])->middleware(["auth"])->name('room.index');
+
+route::get("/admin/room/create", [RoomController::class, "create"])->name("rooms.create");
+
+route::post("/admin/room/store", [RoomController::class, "store"])->name("rooms.store");
+
+route::get("/admin/room/{rooms}/edit", [RoomController::class, "edit"])->name("rooms.edit");
+
+Route::delete('/admin/room/{rooms}/deleteRoom', [RoomController::class, "destroy"])->name("rooms.destroy");
+
+route::put("/admin/room/{rooms}/update", [RoomController::class, "update"])->name("rooms.update");
+
+Route::get('/pages/BOOK/BookRoom', [FrontController::class, "bookRoom"])->name('bookRoom');
 // contact crud
 
 Route::get('/admin/contact', [ContactController::class,"affichage"])->middleware(["auth"])->name('contact.index');
@@ -159,9 +178,33 @@ route::get("/admin/contact/{info}/edit",[ContactController::class,"edit"])->name
 
 route::put("/admin/contact/{info}/update",[ContactController::class,"update"])->name("contacts.update");
 
+//carousel
+
+Route::get('/admin/carousel', [CarouselController::class, "affichage"])->middleware(["auth"])->name('carousel.index');
+// edit
+route::get("/admin/carousel/{carousel}/edit", [CarouselController::class, "edit"])->name("carousel.edit");
+// update
+route::put("/admin/carousel/{carousel}/update", [CarouselController::class, "update"])->name("carousel.update");
 
 
+// videos
 
+Route::get('/admin/video', [FrontController::class, "videosAffiche"])->middleware(["auth"])->name('video.index');
+// // edit
+route::get("/admin/video/{video}/edit",[VideoController::class,"edit"])->name("video.edit");
+Route::put('/admin/video/update', [VideoController::class, "update"])->middleware(["auth"])->name('video.update');
+
+//Reservation
+
+Route::get('/admin/reservation', [ReservationController::class, "affichage"])->middleware(["auth"])->name('reservation.index');
+Route::get('/admin/reservation/{id}/validate', [ReservationController::class, "update"])->middleware(["auth"])->name('reservation.update');
+
+
+//affichage
+Route::get('/dashboard/mailbox', [ContactController::class, "index"])->middleware(["auth"])->name('mailbox.index');
+Route::get('/dashboard/mailbox/archives', [ContactController::class, "archives"])->middleware(["auth"])->name('mailbox.archive');
+Route::get('/dashboard/mailbox/{id}/delete', [ContactController::class, "destroy"])->middleware(["auth"])->name('mailbox.destroy');
+Route::get('/dashboard/mailbox/{id}/restore', [ContactController::class, "restore"])->middleware(["auth"])->name('mailbox.restore');
 
 
 Auth::routes();

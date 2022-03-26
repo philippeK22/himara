@@ -18,7 +18,7 @@ class TeamSeeder extends Seeder
             [
                 "fonction_id"=>1,
 
-                "img"=>"employé_0.jpg",
+                "img"=>"luff.jpg",
 
                 "fullname"=>"Jeanette Owens",
 
@@ -27,7 +27,7 @@ class TeamSeeder extends Seeder
             [
                 "fonction_id"=>2,
 
-                "img"=>"employé_1.jpg",
+                "img"=>"zoro.jpg",
 
                 "fullname"=>"Henry Garret",
 
@@ -36,7 +36,7 @@ class TeamSeeder extends Seeder
             [
                 "fonction_id"=>3,
 
-                "img"=>"employé_2.jpg",
+                "img"=>"sanji.jpg",
 
                 "fullname"=>"Tommy Alexander",
 
@@ -45,7 +45,7 @@ class TeamSeeder extends Seeder
             [
                 "fonction_id"=>4,
 
-                "img"=>"employé_3.jpg",
+                "img"=>"shanks.png",
 
                 "fullname"=>"Penny Soto",
 
@@ -54,7 +54,7 @@ class TeamSeeder extends Seeder
             [
                 "fonction_id"=>5,
 
-                "img"=>"employé_4.png",
+                "img"=>"mihawk.jpg",
 
                 "fullname"=>"Alex Cox",
 
@@ -63,7 +63,7 @@ class TeamSeeder extends Seeder
             [
                 "fonction_id"=>4,
 
-                "img"=>"employé_5.png",
+                "img"=>"barbeBlanche.png",
 
                 "fullname"=>"Alfredo Romero",
 
@@ -72,7 +72,7 @@ class TeamSeeder extends Seeder
             [
                 "fonction_id"=>6,
 
-                "img"=>"employé_6.jpg",
+                "img"=>"roger.jpg",
 
                 "fullname"=>"Glenda Gilbert",
 
@@ -81,10 +81,10 @@ class TeamSeeder extends Seeder
             [
                 "fonction_id"=>7,
 
-                "img"=>"employé_7.png",
+                "img"=>"rayli.jpg",
 
                 "fullname"=>"Sheila Carter",
-                
+
                 "description"=>"Lorem Ipsum which looks many web sites pass websites is therefore always.",
             ],
         ]);

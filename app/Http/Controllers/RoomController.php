@@ -10,14 +10,22 @@ use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function affichage()
     {
         $room = Room::all();
-        return view("admin.room.index", compact("room"));
+        return view("admin.room.main", compact("room"));
     }
 
     public function create()
     {
+        if (count(Room::all()) >= 32) {
+            return back();
+        }
         $categorieRoom = categorieRoom::all();
         $tag = tagRoom::all();
         return view('admin.room.create',compact("categorieRoom","tag"));
@@ -33,6 +41,11 @@ class RoomController extends Controller
             'litMax' => 'required',
             'personMax' => 'required',
         ]);
+
+        $categorie = categorieRoom::find($request->category_room_id);
+        if (count($categorie->rooms) >= 8) {
+            return back();
+        }
 
 
          // fk
