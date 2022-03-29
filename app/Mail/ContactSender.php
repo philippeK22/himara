@@ -30,6 +30,6 @@ class ContactSender extends Mailable
      */
     public function build()
     {
-        return $this->subject('Mail from philippe')->from('philmolengeek@gmail.com', 'phil kanen')->markdown('pages.mailtest');
+        return $this->subject('Mail from philippe')->from('kanengelephilippe@gmail.com', 'phil kanen')->markdown('pages.mailtest');
     }
 }

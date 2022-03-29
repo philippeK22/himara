@@ -115,11 +115,11 @@ route::get("/admin/categoryImage/{categories}/edit",[CategorieImageController::c
 route::put("/admin/categoryImage/{categories}/update",[CategorieImageController::class,"update"])->name("categories.update");
 
 // store pour le formulaire commentaire
-
-Route::get("/comments/{id}/edit", [CommentController::class, "edit"]);
-Route::post("/comments/{id}/store", [CommentController::class,"store"]);
-Route::delete("/comments/{id}/delete", [CommentController::class, "destroy"]);
-Route::put("/comments/{id}/update", [CommentController::class, "update"]);
+Route::get('/admin/comment', [CommentController::class, "affichageComment"])->middleware(["auth"])->name('commentaire.index');
+Route::get("/admin/comment/{id}/edit", [CommentController::class, "edit"]);
+Route::post("/admin/comment/{id}/store", [CommentController::class,"store"]);
+Route::delete("/admin/comment/{id}/delete", [CommentController::class, "destroy"])->name("comment.destroy");
+Route::put("/admin/comment/{id}/update", [CommentController::class, "update"])->name("comment.update");
 
 // Team
 
@@ -201,10 +201,10 @@ Route::get('/admin/reservation/{id}/validate', [ReservationController::class, "u
 
 
 //affichage
-Route::get('/dashboard/mailbox', [ContactController::class, "index"])->middleware(["auth"])->name('mailbox.index');
-Route::get('/dashboard/mailbox/archives', [ContactController::class, "archives"])->middleware(["auth"])->name('mailbox.archive');
-Route::get('/dashboard/mailbox/{id}/delete', [ContactController::class, "destroy"])->middleware(["auth"])->name('mailbox.destroy');
-Route::get('/dashboard/mailbox/{id}/restore', [ContactController::class, "restore"])->middleware(["auth"])->name('mailbox.restore');
+Route::get('/admin/mailbox', [ContactController::class, "index"])->middleware(["auth"])->name('mailbox.index');
+Route::get('/admin/mailbox/archives', [ContactController::class, "archives"])->middleware(["auth"])->name('mailbox.archive');
+Route::get('/admin/mailbox/{id}/delete', [ContactController::class, "destroy"])->middleware(["auth"])->name('mailbox.destroy');
+Route::get('/admin/mailbox/{id}/restore', [ContactController::class, "restore"])->middleware(["auth"])->name('mailbox.restore');
 
 
 Auth::routes();

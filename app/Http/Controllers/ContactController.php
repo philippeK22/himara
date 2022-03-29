@@ -66,4 +66,31 @@ class ContactController extends Controller
         return view("admin.contact.main", compact("info"));
     }
 
+    public function index()
+    {
+
+        $contacts = Contact::all();
+        return view('admin.mailbox.main', compact('contacts'));
+    }
+
+    public function archives()
+    {
+        $contacts = Contact::onlyTrashed()->get();
+        return view('admin.mailbox.main', compact('contacts'));
+    }
+
+    public function destroy($id)
+    {
+        $contact = Contact::find($id);
+        $contact->delete();
+        return back();
+    }
+
+    public function restore($id)
+    {
+        $contact = Contact::withTrashed()->where('id', $id)->first();
+        $contact->restore();
+        return back();
+    }
+
 }

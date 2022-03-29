@@ -117,6 +117,22 @@
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Categorie Image</span>
                         </a>
                     </li>
+                    <li class="nav-item {{ Request::is('admin/carousel') ? 'active' : ''; }}">
+                        <a href="{{ route("carousel.index") }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Carousel</span>
+                        </a>
+                    </li>
+                    <li class="nav-item {{ Request::is('admin/mailbox') ? 'active' : ''; }}">
+                        <a href="{{ route("mailbox.index") }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Mailbox</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item {{ Request::is('admin/comment') ? 'active' : ''; }}">
+                        <a href="{{ route("commentaire.index") }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Commentaire</span>
+                        </a>
+                    </li>
                     <li class="nav-item {{ Request::is('admin/contact') ? 'active' : ''; }}">
                         <a href="{{ route("contact.index") }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Contact</span>

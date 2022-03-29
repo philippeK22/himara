@@ -5,6 +5,7 @@
 <div class="d-flex">
     @include('partials.navbarBackoffice')
     <div class="content w-75">
+        @include('layouts.flash')
 
         <h1>Partie Admin Contact</h1>
         <div class="col-12">

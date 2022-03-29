@@ -34,5 +34,18 @@ class CommentController extends Controller
 
 	}
 
+    public function update($id)
+    {
+        $comment = Comment::find($id);
+        $comment->validate = true;
+        $comment->save();
+        return redirect()->back();
+    }
+    public function affichageComment()
+    {
+        $comment = Comment::all();
+        return view("admin.commentaire.main", compact("comment"));
+    }
+
 
 }

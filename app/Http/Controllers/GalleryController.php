@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
 
     public function index(){
         $imageAll=Image::all();
